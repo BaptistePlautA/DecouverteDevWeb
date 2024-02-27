@@ -1,0 +1,23 @@
+reset
+
+# Définition des paramètres du graphique
+set terminal png
+set output strftime("Graphs/graph_ldc+equi.png", time(0))
+set datafile missing 'NaN'
+set title "Graph des LDC/Equipotentielles"
+set xlabel "tetha"
+set ylabel "r"
+set samples 1000
+set polar
+
+P = 1.86 #Moment dipolaire de l'eau : arbitraire
+K = 1.2 #arbitraire
+L = 0.105 #arbitraire Vo * Epsilon
+
+# Lecture des données
+set style line 1 lc rgb 'blue'
+set style line 2 lc rgb 'red'
+
+plot 0.5*sqrt(abs(P*(cos(t)))/(pi*L)) with lines linestyle 2 title 'equipotentielles',\
+     K*sin(t)**2 with lines linestyle 1 title 'LDC'
+

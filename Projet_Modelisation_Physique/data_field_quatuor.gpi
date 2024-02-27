@@ -1,0 +1,14 @@
+reset
+
+# Définition des paramètres du graphique
+set terminal png
+set output strftime("Graphs/graph_field_quatuor_%Y-%m-%d_%H-%M-%S.png", time(0))
+set datafile missing 'NaN'
+set title "Champ électrique"
+set xrange[-20:20] #ON SET LES X ET LES Y POUR LES FIELD POUR UNE MEILLEUR LISIBILITÉ (Valeurs Extrêmes)
+set yrange[-20:20] #Mais cela rend le tout moins propre sur des x et y petits	
+set xlabel "x"
+set ylabel "y"
+
+# Lecture des données
+plot 'data_field_quatuor.dat' using 1:2:3:4 with vectors notitle

@@ -1,0 +1,17 @@
+reset
+
+# Définition des paramètres du graphique
+set terminal png
+set output strftime("Graphs/graph_potential_%Y-%m-%d_%H-%M-%S.png", time(0))
+set datafile missing 'NaN'
+set title "Carte de Chaleur des Equipotentielles"
+#set xrange[-20:20]
+#set yrange[-20:20]
+set xlabel "x"
+set ylabel "y"
+
+# Lecture des données
+plot 'data_potential.dat' using 1:2:3 with image
+
+
+
